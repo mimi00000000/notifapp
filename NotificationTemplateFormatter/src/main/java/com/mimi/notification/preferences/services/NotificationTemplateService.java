@@ -1,8 +1,8 @@
-package com.manning.application.notification.template.formatter.services;
+package com.mimi.notification.preferences.services;
 
-import com.manning.application.notification.template.formatter.model.NotificationParameters;
-import com.manning.application.notification.template.formatter.model.NotificationTemplateRequest;
-import com.manning.application.notification.template.formatter.model.NotificationTemplateResponse;
+import com.mimi.notification.preferences.model.NotificationParameters;
+import com.mimi.notification.preferences.model.NotificationTemplateRequest;
+import com.mimi.notification.preferences.model.NotificationTemplateResponse;
 import org.apache.commons.text.StringSubstitutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,8 +22,6 @@ public class NotificationTemplateService {
     private SpringTemplateEngine templateEngine;
 
 
-
-
     public NotificationTemplateResponse getNotificationMergedTemplate(NotificationTemplateRequest notificationTemplateRequest) {
         String notificationContent="";
         Map<String, Object> notificationParametersMap =
@@ -31,30 +29,29 @@ public class NotificationTemplateService {
                 stream()
                 .collect(Collectors
                     .toMap(NotificationParameters::getNotificationParameterName, NotificationParameters::getNotificationParameterValue));
-        NotificationTemplateResponse notificationTemplateResponse=new NotificationTemplateResponse();
+        NotificationTemplateResponse notificationTemplateResponse = new NotificationTemplateResponse();
 
-        if(notificationTemplateRequest.getNotificationMode().equals("EMAIL")) {
+        if (notificationTemplateRequest.getNotificationMode().equals("EMAIL")) {
             Context context = new Context();
             context.setVariables(notificationParametersMap);
-            File emailTemplateFile=new File("./src/main/resources/templates/email/"+notificationTemplateRequest.getNotificationTemplateName() + ".html");
+            File emailTemplateFile = new File("./src/main/resources/templates/email/"+notificationTemplateRequest.getNotificationTemplateName() + ".html");
             //System.out.println(emailTemplateFile.getAbsolutePath());
             NotificationTemplateResponse response = new NotificationTemplateResponse();
-          if(emailTemplateFile.exists()) {
+
+          if (emailTemplateFile.exists()) {
               notificationContent = templateEngine.process("./email/" + notificationTemplateRequest.getNotificationTemplateName() + ".html", context);
               response.setEmailContent(notificationContent);
               notificationTemplateResponse.setStatus("SUCCESS");
               notificationTemplateResponse.setStatusDescription("Successfully merged the template with the template parameters");
               notificationTemplateResponse.setEmailSubject("Message from Citizen Bank");
               notificationTemplateResponse.setEmailContent(notificationContent);
-          }
-            else
-            {
+          } else {
                 notificationTemplateResponse.setStatus("ERROR");
                 notificationTemplateResponse.setStatusDescription("Email Template is not available");
-            }
+          }
 
-        }
-        else {
+        } else {
+
             String smstemplateString = "";
             if (notificationTemplateRequest.getNotificationTemplateName().equalsIgnoreCase("ViewBalance")) {
                 smstemplateString = this.getBalanceSMSTemplate();
