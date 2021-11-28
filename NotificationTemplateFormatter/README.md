@@ -30,3 +30,12 @@ http://localhost:8082/swagger-ui/
                         "smsContent": null,
                         "emailSubject": "Message from Citizen Bank"
                     }
+                    
+  - Resposne if notificationMode is SMS:
+                      {
+                          "status": "SUCCESS",
+                          "statusDescription": "TSuccessfully merged the template with the template parameters",
+                          "emailContent": null,
+                          "smsContent": "Hello Vamshi\nWelcome to the Citizen Bank\nYour Phonenumber is changed from 12345 to 09828723\n",
+                          "emailSubject": null
+                      }
