@@ -1,10 +1,19 @@
-package com.manning.application.notification.model;
+package com.mimi.notification.preferences.model;
 
 public class NotificationResponse {
 
     private String status;
     private String statusDescription;
     private Long notificationReferenceId;
+
+    public NotificationResponse() {
+    }
+
+    public NotificationResponse(String status, String statusDescription, Long notificationReferenceId) {
+        this.status = status;
+        this.statusDescription = statusDescription;
+        this.notificationReferenceId = notificationReferenceId;
+    }
 
     public String getStatus() {
         return status;

@@ -1,12 +1,9 @@
-package com.manning.application.notification.integration;
+package com.mimi.notification.preferences.integration;
 
-import com.manning.application.notification.model.NotificationGatewayRequest;
-import com.manning.application.notification.model.NotificationGatewayResponse;
-import com.manning.application.notification.model.NotificationTemplateRequest;
-import com.manning.application.notification.model.NotificationTemplateResponse;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import com.mimi.notification.preferences.model.NotificationGatewayRequest;
+import com.mimi.notification.preferences.model.NotificationGatewayResponse;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 

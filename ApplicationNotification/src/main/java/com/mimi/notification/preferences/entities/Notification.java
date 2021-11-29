@@ -1,4 +1,4 @@
-package com.manning.application.notification.entities;
+package com.mimi.notification.preferences.entities;
 
 import javax.persistence.*;
 import java.util.List;

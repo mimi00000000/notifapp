@@ -1,4 +1,4 @@
-package com.manning.application.notification.config;
+package com.mimi.notification.preferences.config;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;

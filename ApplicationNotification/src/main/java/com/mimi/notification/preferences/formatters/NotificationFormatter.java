@@ -1,7 +1,8 @@
-package com.manning.application.notification.formatters;
+package com.mimi.notification.preferences.formatters;
 
-import com.manning.application.notification.entities.Notification;
-import com.manning.application.notification.model.*;
+
+import com.mimi.notification.preferences.entities.Notification;
+import com.mimi.notification.preferences.model.*;
 import org.springframework.stereotype.Component;
 
 @Component

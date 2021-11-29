@@ -1,18 +1,12 @@
-package com.manning.application.notification.integration;
+package com.mimi.notification.preferences.integration;
 
-import com.manning.application.notification.model.NotificationPreferencesRequest;
-import com.manning.application.notification.model.NotificationPreferencesResponse;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
+import com.mimi.notification.preferences.model.NotificationPreferencesRequest;
+import com.mimi.notification.preferences.model.NotificationPreferencesResponse;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
+
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
-import java.nio.charset.StandardCharsets;
 
 @Component
 public class NotificationPreferencesIntegration {

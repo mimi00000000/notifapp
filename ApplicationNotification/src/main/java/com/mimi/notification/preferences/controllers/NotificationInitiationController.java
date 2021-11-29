@@ -1,8 +1,8 @@
-package com.manning.application.notification.controllers;
+package com.mimi.notification.preferences.controllers;
 
-import com.manning.application.notification.model.NotificationRequest;
-import com.manning.application.notification.model.NotificationResponse;
-import com.manning.application.notification.services.NotificationService;
+import com.mimi.notification.preferences.model.NotificationRequest;
+import com.mimi.notification.preferences.model.NotificationResponse;
+import com.mimi.notification.preferences.services.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +17,7 @@ public class NotificationInitiationController {
     public NotificationResponse sendNotification(@RequestBody NotificationRequest notificationRequest) {
         System.out.println("Name"+ notificationRequest.getNotificationParameters().get(0).getNotificationParameterName());
 
-        NotificationResponse notificationResponse=notificationService.saveNotification(notificationRequest);
+        NotificationResponse notificationResponse = notificationService.saveNotification(notificationRequest);
         return notificationResponse;
     }
 
