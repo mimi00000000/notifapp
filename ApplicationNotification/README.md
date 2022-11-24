@@ -3,6 +3,7 @@ http://localhost:8080/swagger-ui/
 
 # Postman
 - request: post to url http://localhost:8080/api/notifications
+```
 - request body: {
                   "customerId": "123",
                   "notificationMode": "",
@@ -29,3 +30,4 @@ http://localhost:8080/swagger-ui/
                         "statusDescription": "Notification Received Successfully",
                         "notificationReferenceId": 1
                     }
+```

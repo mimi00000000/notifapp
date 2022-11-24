@@ -22,6 +22,9 @@ import java.nio.charset.StandardCharsets;
 @Configuration
 public class NotificationGatewayService {
 
+    private static final String SUCCESS_MESSAGE = "SUCCESS";
+    private static final String FAILURE_MESSAGE = "FAILURE";
+
     @Autowired
     private JavaMailSender emailSender;
 
@@ -38,29 +41,25 @@ public class NotificationGatewayService {
     private String twilioFromPhoneNumber;
 
     public NotificationGatewayResponse sendEmailNotification(@RequestBody NotificationGatewayRequest notificationGatewayRequest) {
+        NotificationGatewayResponse response = new NotificationGatewayResponse();
+        response.setStatus(FAILURE_MESSAGE);
+        response.setStatusDescription("Send FAILED");
 
         MimeMessage message = emailSender.createMimeMessage();
         MimeMessageHelper helper = null;
         try {
-            helper = new MimeMessageHelper(message,
-                    MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
-                    StandardCharsets.UTF_8.name());
-
+            helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
             helper.addAttachment("CitizenBank.png", new ClassPathResource("CitizenBank.png"));
-
             helper.setTo(notificationGatewayRequest.getEmailAddress());
             helper.setText(notificationGatewayRequest.getNotificationContent(), true);
             helper.setSubject(notificationGatewayRequest.getEmailSubject());
             helper.setFrom(emailFrom);
             emailSender.send(message);
-
-        }
-        catch (MessagingException e) {
+            response.setStatus(SUCCESS_MESSAGE);
+            response.setStatusDescription("Send Sucessfully");
+        } catch (MessagingException e) {
             e.printStackTrace();
         }
-        NotificationGatewayResponse response = new NotificationGatewayResponse();
-        response.setStatus("SUCCESS");
-        response.setStatusDescription("Send Sucessfully");
         return response;
     }
 
@@ -73,13 +72,13 @@ public class NotificationGatewayService {
                 new PhoneNumber(twilioFromPhoneNumber),
                 notificationGatewayRequest.getNotificationContent())
                 .create();
-        if(message.getStatus().toString().equalsIgnoreCase("SENT")) {
-            response.setStatus("SUCCESS");
+        if (message.getStatus().toString().equalsIgnoreCase("SENT")) {
+            response.setStatus(SUCCESS_MESSAGE);
+            response.setStatusDescription(message.getStatus().toString());
+        } else {
+            response.setStatus(FAILURE_MESSAGE);
             response.setStatusDescription(message.getStatus().toString());
         }
-        else
-            response.setStatus("SUCCESS");
-        response.setStatusDescription("Send Sucessfully");
         return response;
 
     }
