@@ -6,8 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface NotificationPreferenceRepository extends JpaRepository<NotificationPreferences,Long> {
-
-NotificationPreferences findByCustomerid(String customerid);
-
+    NotificationPreferences findByCustomerid(String customerid);
 }
 

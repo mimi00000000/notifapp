@@ -1,4 +1,4 @@
-# Notifapp
+_# Notifapp
 
 ## Project Structure
 
@@ -172,3 +172,46 @@ along with the Docket bean.
 ```
 
 
+## generate Banner for each microservice
+https://devops.datenkollektiv.de/banner.txt/index.html
+
+
+## docker-compose.yml file
+- run docker postgres, pgadmin, ... services
+  --> docker-compose up -d
+
+
+##  docker version
+--> docker-compose --version
+docker-compose version 1.26.2, build eefe0d31
+
+--> docker --version
+Docker version 19.03.12, build 48a66213fe
+
+
+## docker hub
+- Docker hub: registry to pull images.
+
+
+##  postgres
+- Access pgAdmin
+http://localhost:5050/browser
+
+- connect to postgres database
+
+- dependencies
+```
+ <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+ </dependency>
+ <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <scope>runtime</scope>
+ </dependency>
+```
+
+
+##  java version
+- Java 11

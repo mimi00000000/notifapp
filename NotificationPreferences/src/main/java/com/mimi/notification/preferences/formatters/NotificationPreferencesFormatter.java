@@ -10,7 +10,7 @@ public class NotificationPreferencesFormatter {
 
     public NotificationPreferencesResponse formatNotificationResponse(NotificationPreferences notificationPreference) {
         NotificationPreferencesResponse notificationPreferencesResponse=new NotificationPreferencesResponse();
-        if(notificationPreference!=null && notificationPreference.getId()!= null) {
+        if (notificationPreference!=null && notificationPreference.getId()!= null) {
             notificationPreferencesResponse.setCustomerId(notificationPreference.getCustomerid());
             notificationPreferencesResponse.setEmailPreferenceFlag(notificationPreference.isEmailpreferenceflag());
             notificationPreferencesResponse.setSmsPreferenceFlag(notificationPreference.isSmspreferenceflag());
@@ -18,9 +18,7 @@ public class NotificationPreferencesFormatter {
             notificationPreferencesResponse.setPhoneNumber(notificationPreference.getPhonenumber());
             notificationPreferencesResponse.setStatus("SUCCESS");
             notificationPreferencesResponse.setStatusDescription("Notification Received Successfully");
-        }
-        else
-        {
+        } else {
             notificationPreferencesResponse.setStatus("ERROR");
             notificationPreferencesResponse.setStatusDescription("Notification Failed");
         }

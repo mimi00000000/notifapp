@@ -1,7 +1,5 @@
 package com.mimi.notification.preferences.entities;
 
-
-
 import javax.persistence.*;
 
 @Entity
@@ -9,7 +7,7 @@ import javax.persistence.*;
 public class NotificationPreferences {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String customerid;
     private boolean smspreferenceflag;
